@@ -206,6 +206,11 @@ _G.packer_plugins = {
     path = "/Users/kacperjarocki/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  pywal = {
+    loaded = true,
+    path = "/Users/kacperjarocki/.local/share/nvim/site/pack/packer/start/pywal",
+    url = "https://github.com/AlphaTechnolog/pywal.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/kacperjarocki/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",

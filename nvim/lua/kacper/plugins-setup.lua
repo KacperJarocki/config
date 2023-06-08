@@ -27,6 +27,7 @@ return require("packer").startup(function(use)
 
 	use("catppuccin/nvim")
 	use("dylanaraps/wal.vim")
+	use({ "AlphaTechnolog/pywal.nvim", as = "pywal" })
 
 	use("christoomey/vim-tmux-navigator")
 	use("szw/vim-maximizer")
