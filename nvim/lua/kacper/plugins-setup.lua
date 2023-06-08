@@ -43,6 +43,8 @@ return require("packer").startup(function(use)
 
 	--file explorer
 	use("nvim-tree/nvim-tree.lua")
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
+
 	--icons
 	use("kyazdani42/nvim-web-devicons")
 	-- status
@@ -77,10 +79,7 @@ return require("packer").startup(function(use)
 	--nvim-treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
+		run = ":TSUpdate",
 	})
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
