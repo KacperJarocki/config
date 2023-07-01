@@ -22,14 +22,10 @@ return require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	--dashboard
 	use({
-		"glepnir/dashboard-nvim",
-		event = "VimEnter",
+		"goolord/alpha-nvim",
 		config = function()
-			require("dashboard").setup({
-				-- config
-			})
+			require("alpha").setup(require("alpha.themes.dashboard").config)
 		end,
-		requires = { "nvim-tree/nvim-web-devicons" },
 	})
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	--window managers
@@ -49,8 +45,19 @@ return require("packer").startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
-	--Tree sitter
-
+	--upper bar
+	use({
+		"utilyre/barbecue.nvim",
+		tag = "*",
+		requires = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		after = "nvim-web-devicons", -- keep this if you're using NvChad
+		config = function()
+			require("barbecue").setup()
+		end,
+	})
 	--Fuzzy finder
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -104,6 +111,34 @@ return require("packer").startup(function(use)
 	})
 	--git integration
 	use("lewis6991/gitsigns.nvim")
+
+	--learing vim
+	use("m4xshen/hardtime.nvim")
+	--prettier ui
+	use({ "stevearc/dressing.nvim" })
+	--autopairs
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+	--shortcuts helper
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup({})
+		end,
+	})
+	--rust
+	use("simrat39/rust-tools.nvim")
+
+	-- Debugging
+	use("mfussenegger/nvim-dap")
+	use("jay-babu/mason-nvim-dap.nvim")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

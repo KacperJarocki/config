@@ -54,8 +54,18 @@ lspconfig["lua_ls"].setup({
 		},
 	},
 })
+local setup_rt, rt = pcall(require, "rust-tools")
+if not setup_rt then
+	return
+end
 
-lspconfig["rust_analyzer"].setup({
+rt.setup({
+	server = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	},
+})
+lspconfig["tsserver"].setup({
 	capabilities = capabilities,
-  on_attach = on_attach,
+	on_attach = on_attach,
 })

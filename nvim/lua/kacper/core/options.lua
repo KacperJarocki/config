@@ -1,6 +1,5 @@
 local opt = vim.opt
 
-opt.relativenumber = true
 opt.number = true
 
 opt.tabstop = 2
@@ -11,7 +10,7 @@ opt.autoindent = true
 opt.wrap = false
 
 opt.ignorecase = true
-opt.smartcase  = true
+opt.smartcase = true
 
 opt.cursorline = true
 
