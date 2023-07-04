@@ -138,7 +138,20 @@ return require("packer").startup(function(use)
 	-- Debugging
 	use("mfussenegger/nvim-dap")
 	use("jay-babu/mason-nvim-dap.nvim")
-
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("leoluz/nvim-dap-go")
+	use({
+		"saecki/crates.nvim",
+		tag = "v0.3.0",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+	use({
+		"mfussenegger/nvim-dap-python",
+		config = function(_, opts)
+			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+			require("dap-python").setup(path)
+		end,
+	})
 	if packer_bootstrap then
 		require("packer").sync()
 	end

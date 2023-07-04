@@ -1,33 +1,89 @@
 vim.g.mapleader = " "
-
+local wk = require("which-key")
 local keymap = vim.keymap
-
-keymap.set("n", "<leader>nh", ":nohl<CR>")
+wk.register({
+	["<leader>nh"] = {
+		":nohl<CR>",
+		"no highlights",
+	},
+	["<leader>sv"] = {
+		"<C-w>s",
+		"create vertical splits",
+	},
+	["<leader>sh"] = {
+		"<C-w>v",
+		"create horizontal split",
+	},
+	["<leader>se"] = {
+		"<C-w>=",
+		"equal split sizes",
+	},
+	["<leader>sx"] = {
+		":close<CR>",
+		"close split",
+	},
+	["<leader>to"] = {
+		":tabnew<CR>",
+		"create new tab",
+	},
+	["<leader>tx"] = {
+		":tabclose<CR>",
+		"close tab",
+	},
+	["<leader>tn"] = {
+		":tabn<CR>",
+		"show next tab",
+	},
+	["<leader>tp"] = {
+		":tabp<CR>",
+		"show previous tab",
+	},
+	["<leader>sm"] = {
+		":MaximizerToggle<CR>",
+		"toggle maximizing tab",
+	},
+	["<leader>ff"] = {
+		"<cmd>Telescope find_files<cr>",
+		"find files",
+	},
+	["<leader>e"] = {
+		":NvimTreeToggle<CR>",
+		"Toggle file tree",
+	},
+	["<leader>fs"] = {
+		"<cmd>Telescope live_grep<cr>",
+		"find string in current directory",
+	},
+	["<leader>fc"] = {
+		"<cmd>Telescope grep_string<cr>",
+		"find string under cursor",
+	},
+	["<leader>fb"] = {
+		"<cmd>Telescope buffers<cr>",
+		"list of open buffers",
+	},
+	["<leader>lsrs"] = {
+		":LspRestart<CR>",
+		"restart lsp",
+	},
+	["<leader>db"] = {
+		":DapToggleBreakpoint<CR>",
+		"debuging breakpoint",
+	},
+	["<leader>ds"] = {
+		":DapStepOver<CR>",
+		"Next line in debuging",
+	},
+	["<leader>dso"] = {
+		":DapStepOut<CR>",
+		"quit debuging session",
+	},
+	["<leader>rcu"] = {
+		function()
+			require("crates").upgrade_all_crates()
+		end,
+		"update crates",
+	},
+})
 
 keymap.set("n", "x", '"_x')
-
-keymap.set("n", "<leader>sv", "<C-w>s")
-keymap.set("n", "<leader>sh", "<C-w>v")
-keymap.set("n", "<leader>se", "<C-w>=")
-keymap.set("n", "<leader>sx", ":close<CR>")
-
-keymap.set("n", "<leader>to", ":tabnew<CR>")
-keymap.set("n", "<leader>tx", ":tabclose<CR>")
-keymap.set("n", "<leader>tn", ":tabn<CR>")
-keymap.set("n", "<leader>tp", ":tabp<CR>")
-
---plugins keymap
---maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
-
---File Explorer
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
-
---Telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-
---lsp
-keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessarkeymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessaryy

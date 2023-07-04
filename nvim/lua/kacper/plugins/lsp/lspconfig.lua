@@ -54,18 +54,48 @@ lspconfig["lua_ls"].setup({
 		},
 	},
 })
+--rust
 local setup_rt, rt = pcall(require, "rust-tools")
 if not setup_rt then
 	return
 end
-
 rt.setup({
 	server = {
 		on_attach = on_attach,
 		capabilities = capabilities,
 	},
+	dap = {
+		adapter = {
+			type = "executable",
+			command = "lldb-vscode",
+			name = "rt_lldb",
+		},
+	},
 })
+--js and typescript
 lspconfig["tsserver"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+})
+
+--go
+lspconfig["gopls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gowork", "gotmpl" },
+	settings = {
+		gopls = {
+			completeUnimported = true,
+			usePlaceholders = true,
+			analyses = {
+				unusedparams = true,
+			},
+		},
+	},
+})
+--python
+lspconfig["pyright"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
