@@ -84,6 +84,80 @@ wk.register({
 		end,
 		"update crates",
 	},
+  ["<leader>rih"] = {
+		function()
+      require('rust-tools').inlay_hints.set()
+		end,
+		"Turn on hints for this buffer",
+	},
+  ["<leader>rmu"] = {
+		function()
+      require'rust-tools'.move_item.move_item(true)
+		end,
+		"Rust move item up",
+	},
+  ["<leader>rmd"] = {
+		function()
+      require'rust-tools'.move_item.move_item(false)
+		end,
+		"Rust move item down",
+	},
+
+  	["<leader>jo"] = {
+		function()
+      require'jdtls'.organize_imports()
+		end,
+		"Organize java imports",
+	},
+	["<leader>jev"] = {
+		function()
+	    require('jdtls').extract_variable()
+    end,
+		"extract variable",
+	},
+	["<leader>jec"] = {
+		function()
+require('jdtls').extract_constant()
+		end,
+		"extract constant",
+	},
+	["<leader>jtc"] = {
+		function()
+require'jdtls'.test_class()
+		end,
+		"Test java class",
+	},
+	["<leader>jtm"] = {
+		function()
+require'jdtls'.test_nearest_method()
+		end,
+		"test nearest method",
+	},
 })
 
+local mappings = {
+
+	["<leader>jev"] = {
+		function()
+      require('jdtls').extract_variable(true)
+		end,
+		"extract variable",
+	},
+["<leader>jec"] = {
+		function()
+      require('jdtls').extract_constant(true)
+		end,
+		"extract constant",
+	},
+	["<leader>jem"] = {
+		function()
+      require('jdtls').extract_method(true)
+		end,
+		"extract method",
+	},
+}
+local opts = {
+  mode = "v",
+}
+wk.register(mappings,opts)
 keymap.set("n", "x", '"_x')

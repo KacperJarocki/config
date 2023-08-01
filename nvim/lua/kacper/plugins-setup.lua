@@ -20,14 +20,7 @@ vim.cmd([[
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim")
-	--dashboard
-	use({
-		"goolord/alpha-nvim",
-		config = function()
-			require("alpha").setup(require("alpha.themes.dashboard").config)
-		end,
-	})
-	use({ "catppuccin/nvim", as = "catppuccin" })
+use({ "catppuccin/nvim", as = "catppuccin" })
 	--window managers
 	use("christoomey/vim-tmux-navigator")
 	use("szw/vim-maximizer")
@@ -87,19 +80,8 @@ return require("packer").startup(function(use)
 	-- configuring lsp servers
 	use("neovim/nvim-lspconfig") -- easily configure language servers
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		requires = {
-			{ "nvim-tree/nvim-web-devicons" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-	}) -- enhanced lsp uis
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
-
-	-- formatting & linting
-	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+  use 'mfussenegger/nvim-jdtls' --better java lsp 
 
 	-- treesitter configuration
 	use({
@@ -109,11 +91,7 @@ return require("packer").startup(function(use)
 			ts_update()
 		end,
 	})
-	--git integration
-	use("lewis6991/gitsigns.nvim")
 
-	--learing vim
-	use("m4xshen/hardtime.nvim")
 	--prettier ui
 	use({ "stevearc/dressing.nvim" })
 	--autopairs
