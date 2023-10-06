@@ -82,7 +82,23 @@ use({ "catppuccin/nvim", as = "catppuccin" })
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
   use 'mfussenegger/nvim-jdtls' --better java lsp 
+  --Obsidian in nvim
+  use({
+  "epwalsh/obsidian.nvim",
+  requires = {
+    -- Required.
+    "nvim-lua/plenary.nvim",
 
+    -- see below for full list of optional dependencies 👇
+  },
+  config = function()
+    require("obsidian").setup({
+      dir = "~/my-vault",
+
+      -- see below for full list of options 👇
+    })
+  end,
+})
 	-- treesitter configuration
 	use({
 		"nvim-treesitter/nvim-treesitter",

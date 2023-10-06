@@ -78,6 +78,10 @@ wk.register({
 		":DapStepOut<CR>",
 		"quit debuging session",
 	},
+	["<leader>li"] = {
+		":Telescope lsp_implementations<CR>",
+		"lsp implementation",
+	},
 	["<leader>rcu"] = {
 		function()
 			require("crates").upgrade_all_crates()

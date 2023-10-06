@@ -7,7 +7,7 @@ vim.list_extend(bundles, vim.split(vim.fn.glob("~/vscode-java-test/server/*.jar"
 
 
 local config = {
-    cmd ={'/opt/homebrew/Cellar/jdtls/1.25.0/bin/jdtls'},
+    cmd ={'/opt/homebrew/Cellar/jdtls/1.26.0/bin/jdtls'},
     root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
    init_options = {
     bundles = bundles;
