@@ -1,17 +1,13 @@
-local setup, tree = pcall(require, "nvim-tree")
-if not setup then
-  return
-end
-
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
-tree.setup({
-actions = {
-  open_file = {
-    window_picker = {
-      enable = false,
-    }, 
+return{
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
   },
-},
-})
+  config = function()
+    require("nvim-tree").setup {}
+    local keymap = vim.keymap
+    keymap.set("n","<leader>e","<cmd>NvimTreeToggle<cr>")
+  end,
+}
